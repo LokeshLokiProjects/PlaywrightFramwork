@@ -1,49 +1,47 @@
-import exceltojson from 'convert-excel-to-json'
-import csvToJson from 'convert-csv-to-json'
-import fs from 'fs'
+import exceltojson from "convert-excel-to-json";
+import csvToJson from "convert-csv-to-json";
+import fs from "fs";
 
 export default class DataUtils {
+  static excelDataRead(excelPath: string, sheet: string, columnKeys: object) {
+    const exceldata = exceltojson({
+      sourceFile: excelPath,
 
-    static excelDataRead(excelPath: string, sheet: string, columnKeys: object) {
+      header: {
+        rows: 1,
+      },
+      sheets: [sheet],
+      columnToKey: columnKeys,
+    });
 
-        const exceldata = exceltojson({
-            sourceFile: excelPath,
+    let array: Array<any> = [];
 
-            header: {
-                rows: 1
-            },
-            sheets: [sheet],
-            columnToKey: columnKeys
+    exceldata.data.forEach((element) => {
+      array.push(element);
+    });
 
-        });
+    return Object.entries(array);
+  }
 
-        let array: Array<any> = []
+  static csvDataRead(csvPath: string) {
+    let json = csvToJson.parseSubArray("*", ",").getJsonFromCsv(csvPath);
 
+    return Object.entries(json);
+  }
 
-        exceldata.data.forEach(element => {
-            array.push(element)
-        });
-
-        return Object.entries(array)
+  static writeDataToTextFile(
+    filePath: string,
+    data: string,
+    Keys: "writefile" | "appedfile",
+  ) {
+    if (Keys === "writefile") {
+      fs.writeFile(filePath, data, (err) => {
+        if (err) throw err;
+      });
+    } else if (Keys === "appedfile") {
+      fs.appendFile(filePath, data, (err) => {
+        if (err) throw err;
+      });
     }
-
-    static csvDataRead(csvPath: string) {
-
-        let json = csvToJson.parseSubArray('*',',').getJsonFromCsv(csvPath)
-
-        return Object.entries(json)
-    }
-
-    static writeDataToTextFile(filePath: string,data: string, Keys: "writefile" | "appedfile"){
-        
-        if(Keys === "writefile"){
-            fs.writeFile(filePath,data, err => {
-                if(err) throw err
-            } )
-        }else if(Keys === "appedfile"){
-            fs.appendFile(filePath, data, err => {
-                if(err) throw err
-            })
-        }
-    }
+  }
 }
