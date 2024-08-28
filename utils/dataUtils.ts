@@ -1,5 +1,6 @@
 import exceltojson from 'convert-excel-to-json'
 import csvToJson from 'convert-csv-to-json'
+import fs from 'fs'
 
 export default class DataUtils {
 
@@ -31,5 +32,18 @@ export default class DataUtils {
         let json = csvToJson.parseSubArray('*',',').getJsonFromCsv(csvPath)
 
         return Object.entries(json)
+    }
+
+    static writeDataToTextFile(filePath: string,data: string, Keys: "writefile" | "appedfile"){
+        
+        if(Keys === "writefile"){
+            fs.writeFile(filePath,data, err => {
+                if(err) throw err
+            } )
+        }else if(Keys === "appedfile"){
+            fs.appendFile(filePath, data, err => {
+                if(err) throw err
+            })
+        }
     }
 }
