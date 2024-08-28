@@ -1,0 +1,8 @@
+playwright-report
+test-results
+test-examples
+.gitignore
+**/*.txt
+**/*.csv
+**/*.xlsx
+**/*.json
