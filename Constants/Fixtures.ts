@@ -1,18 +1,32 @@
 import {test as base} from "playwright/test";
-import ElementUtils from "../utils/ElemntUtils";
+import RegisterPage  from "../PageObjects/RegsiterPage";
+import HomePage from "../PageObjects/homePage";
+import ElementUtils from "../utils/Utils";
 
 
 
 
 type pageObjects = {
-    element: ElementUtils
+    homePage: HomePage,
+    registerPage: RegisterPage,
+    elementUtils: ElementUtils
+
 }
 
-
 const test = base.extend<pageObjects>({
-    element: async ({ page }, use) => {
-        await use(new ElementUtils(page));
+
+    homePage: async ({ page }, use) => {
+        await use(new HomePage(page));
     },
+
+    registerPage: async ({page} , use) => {
+        await use(new RegisterPage(page))
+    },
+
+    elementUtils: async ({page} , use) => {
+        await use(new ElementUtils(page))
+    }
+
 })
 
 export default test;

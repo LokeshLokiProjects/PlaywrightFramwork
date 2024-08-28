@@ -8,7 +8,10 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.46.1",
-    "@types/node": "^22.4.1"
+    "@types/node": "^22.4.1",
+    "convert-csv-to-json": "^2.48.0",
+    "convert-excel-to-json": "^1.7.0"
   }
 }
