@@ -3,6 +3,9 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+
+# files to exclude
 *.csv
 *.xlsx
 *.txt
