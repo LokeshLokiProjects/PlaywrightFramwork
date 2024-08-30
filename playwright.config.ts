@@ -44,11 +44,18 @@ export default defineConfig({
         viewport: { width: 1452, height: 630 },
       },
     },
+    {
+      name: "API Tests",
+      use: {},
+    },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: "firefox",
+      use: {
+        ...devices["Desktop Firefox"],
+        viewport: { width: 1452, height: 630 },
+      },
+    },
 
     // {
     //   name: 'webkit',

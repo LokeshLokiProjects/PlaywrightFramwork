@@ -14,9 +14,9 @@ export default class DataUtils {
       columnToKey: columnKeys,
     });
 
-    let array: Array<any> = [];
+    const array: Array<any> = [];
 
-    exceldata.data.forEach((element) => {
+    exceldata.data.forEach((element: any) => {
       array.push(element);
     });
 
@@ -24,7 +24,7 @@ export default class DataUtils {
   }
 
   static csvDataRead(csvPath: string) {
-    let json = csvToJson.parseSubArray("*", ",").getJsonFromCsv(csvPath);
+    const json = csvToJson.parseSubArray("*", ",").getJsonFromCsv(csvPath);
 
     return Object.entries(json);
   }

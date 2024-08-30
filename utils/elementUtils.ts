@@ -12,8 +12,8 @@ export default class ElementUtils {
     nextClickLocator: Locator,
   ) {
     while (true) {
-      let month = await monthLocator.textContent();
-      let year = await yearLocator.textContent();
+      const month = await monthLocator.textContent();
+      const year = await yearLocator.textContent();
 
       if (monthJK == month && yearJK == year) {
         break;
@@ -45,7 +45,11 @@ export default class ElementUtils {
   }
 
   async delayInSeconds(seconds: number) {
-    let time = seconds * 1000;
+    const time = seconds * 1000;
     await this.page.waitForTimeout(time);
+  }
+
+  async navigateToBaseAuthUrl() {
+    await this.page.goto("");
   }
 }
