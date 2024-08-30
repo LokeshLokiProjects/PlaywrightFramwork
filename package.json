@@ -3,18 +3,28 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "format": "npx prettier . --write"
+    "format": "npx prettier . --write",
+    "check:types": "npx tsc --noEmit",
+    "check:eslint": "npx eslint .",
+    "api": "npx playwright test ./tests/API/* --project API Tests",
+    "web:c": "npx playwright test ./tests/Web/* --project chromium",
+    "web:f": "npx playwright test ./tests/Web/* --project firefox"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@eslint/js": "^9.9.1",
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.46.1",
+    "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.4.1",
     "convert-csv-to-json": "^2.48.0",
     "convert-excel-to-json": "^1.7.0",
-    "prettier": "3.3.3"
+    "eslint": "^9.9.1",
+    "prettier": "3.3.3",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.3.0"
   }
 }
