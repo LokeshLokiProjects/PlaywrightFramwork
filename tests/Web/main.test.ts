@@ -32,3 +32,8 @@ test("Account Register test", async ({
     GENERATE_RANDOM_DATA.PASSWORD,
   );
 });
+
+
+test.only("", async({page}) => {
+  
+})
