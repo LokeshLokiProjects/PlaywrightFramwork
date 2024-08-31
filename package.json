@@ -6,7 +6,7 @@
     "format": "npx prettier . --write",
     "check:types": "npx tsc --noEmit",
     "check:eslint": "npx eslint .",
-    "api": "npx playwright test ./tests/API/* --project API Tests",
+    "api": "npx playwright test ./tests/API/* --project API_Tests",
     "web:c": "npx playwright test ./tests/Web/* --project chromium",
     "web:f": "npx playwright test ./tests/Web/* --project firefox"
   },

@@ -45,7 +45,7 @@ export default defineConfig({
       },
     },
     {
-      name: "API Tests",
+      name: "API_Tests",
       use: {},
     },
 
