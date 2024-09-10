@@ -3,12 +3,14 @@ import CreateNewCustomerAccountPage from "../PageObjects/createNewCustomerAccoun
 import HomePage from "../PageObjects/homePage";
 import MyAccountPage from "../PageObjects/myAccountPage";
 import ElementUtils from "../utils/elementUtils";
+import CustomerLoginPage from "../PageObjects/customerLoginPage";
 
 type pageObjects = {
   createNewCustomerAccountPage: CreateNewCustomerAccountPage;
   homePage: HomePage;
   myAccountPage: MyAccountPage;
   elementUtils: ElementUtils;
+  customerLoginPage: CustomerLoginPage;
 };
 
 const test = base.extend<pageObjects>({
@@ -23,6 +25,9 @@ const test = base.extend<pageObjects>({
   },
   elementUtils: async ({ page }, use) => {
     await use(new ElementUtils(page));
+  },
+  customerLoginPage: async ({ page }, use) => {
+    await use(new CustomerLoginPage(page));
   },
 });
 

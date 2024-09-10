@@ -7,8 +7,10 @@
     "check:types": "npx tsc --noEmit",
     "check:eslint": "npx eslint .",
     "api": "npx playwright test ./tests/API/* --project API_Tests",
-    "web:c": "npx playwright test ./tests/Web/* --project chromium",
-    "web:f": "npx playwright test ./tests/Web/* --project firefox"
+    "web:c": "npx playwright test ./tests/Web/* --project chromium --headed",
+    "web:f": "npx playwright test ./tests/Web/* --project firefox --headed",
+    "web:ch": "npx playwright test ./tests/Web/* --project chromium",
+    "web:fh": "npx playwright test ./tests/Web/* --project firefox"
   },
   "keywords": [],
   "author": "",
@@ -26,5 +28,8 @@
     "prettier": "3.3.3",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.3.0"
+  },
+  "dependencies": {
+    "playwright": "^1.46.1"
   }
 }

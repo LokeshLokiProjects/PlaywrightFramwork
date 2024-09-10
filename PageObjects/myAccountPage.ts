@@ -14,7 +14,7 @@ export default class MyAccountPage {
   async saveCredentailsinTxtFile(email: string, password: string) {
     DataUtils.writeDataToTextFile(
       "./lumacredentials.txt",
-      email + " | " + password,
+      email + " | " + password + " \n",
       "appedfile",
     );
   }

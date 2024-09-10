@@ -1,4 +1,4 @@
-import { test ,expect } from "playwright/test";
+import { test, expect } from "playwright/test";
 
 test("Post Request", async ({ request }) => {
   const response = await request.post("https://reqres.in/api/users", {

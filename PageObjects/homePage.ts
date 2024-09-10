@@ -18,4 +18,13 @@ export default class HomePage {
       "You are signed out",
     );
   }
+
+  async clickOnSigninButton() {
+    await await this.page.getByRole("link", { name: "Sign In" }).click();
+  }
+
+  //getByLabel('Email', { exact: true })
+  //getByLabel('Password')
+  //getByRole('button', { name: 'Sign In' })
+  //div[class='panel header'] span[class='logged-in']
 }
