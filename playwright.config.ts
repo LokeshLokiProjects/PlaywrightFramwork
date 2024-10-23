@@ -23,7 +23,7 @@ export default defineConfig({
   //workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   //retries:2,
-  reporter: [["html", { open: "never" }]],
+  reporter: [["html", { open: "always" }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -31,6 +31,12 @@ export default defineConfig({
     //headless: false,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     //trace: 'on-first-retry',
+    // launchOptions: {
+    //   logger: {
+    //     isEnabled: (name, severity) => name === 'api',
+    //     log: (name, severity, message, args) => console.log(`${name} ${message}`)
+    //   }
+    // }
   },
 
   /* Configure projects for major browsers */
@@ -60,10 +66,15 @@ export default defineConfig({
       retries: 1,
     },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: "webkit",
+      use: {
+        ...devices["Desktop Safari"],
+        viewport: { width: 1452, height: 630 },
+        headless: true,
+      },
+      retries: 1,
+    },
 
     /* Test against mobile viewports. */
     // {

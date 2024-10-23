@@ -49,7 +49,7 @@ export default class ElementUtils {
     await this.page.waitForTimeout(time);
   }
 
-  async navigateToBaseAuthUrl() {
+  async navigateToBaseAuthUrl(userName: string, password: string) {
     await this.page.goto("");
   }
 }

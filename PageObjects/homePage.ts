@@ -1,11 +1,11 @@
 import { Page } from "playwright";
-import * as DATA from "../Constants/TESTDATA.json";
+import * as DATA from "../frameutils/TESTDATA.json";
 import { expect } from "playwright/test";
 
 export default class HomePage {
   constructor(private readonly page: Page) {}
 
-  async naviagteToUrl() {
+  async navigateToUrl() {
     await this.page.goto(DATA.URL);
   }
 
@@ -20,7 +20,7 @@ export default class HomePage {
   }
 
   async clickOnSigninButton() {
-    await await this.page.getByRole("link", { name: "Sign In" }).click();
+    await this.page.getByRole("link", { name: "Sign In" }).click();
   }
 
   //getByLabel('Email', { exact: true })
