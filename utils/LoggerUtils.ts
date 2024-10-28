@@ -22,7 +22,7 @@ const timeZone = "Asia/Kolkata"; // For India
 const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.timestamp({ format: () => moment().tz(timeZone).format() }),
-    customFormat
+    customFormat,
   ),
   transports: [
     new winston.transports.Console({ level: "debug" }),
@@ -40,6 +40,5 @@ const logger = winston.createLogger({
     // }),
   ],
 });
-
 
 export default logger;

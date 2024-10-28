@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","14718","Verify user able register successfully","chromium","Wed Oct 23 20:46:14 IST 2024","passed","Wed Oct 23 20:46:29 IST 2024","","Web\main.test.ts","",""

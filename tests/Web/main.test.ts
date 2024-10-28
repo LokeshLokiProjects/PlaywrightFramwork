@@ -4,56 +4,70 @@ import * as data from "../../lumacred.json";
 import logger from "../../utils/LoggerUtils";
 
 test.beforeEach(async ({ homePage }) => {
-  
   await homePage.navigateToUrl();
 });
 
-
-test("Account Register test", async ({
+test("Verify user able register successfully", async ({
   homePage,
   createNewCustomerAccountPage,
   myAccountPage,
   elementUtils,
   page,
 }) => {
-  logger.info("Scenario 1: Verify user able Register Succesfully")
-  logger.info("Navigate to URL")
+  await test.step("Navigate to URL", async () => {});
+
+  await test.step("click on create account button", async () => {
+    await homePage.clickonCreateAccount();
+  });
+
+  await test.step("enter firstname", async () => {
+    await createNewCustomerAccountPage.enterFirstName(
+      GENERATE_RANDOM_DATA.FIRSTNAME,
+    );
+  });
+
+  await test.step("enter lastname", async () => {
+    await createNewCustomerAccountPage.enterLastName(
+      GENERATE_RANDOM_DATA.LASTNAME,
+    );
+  });
+
+  await test.step("enter email address", async () => {
+    await createNewCustomerAccountPage.enterEmailAddress(
+      GENERATE_RANDOM_DATA.EMAILADDRESS,
+    );
+  });
+
+  await test.step("enter password", async () => {
+    await createNewCustomerAccountPage.enterPassword(
+      GENERATE_RANDOM_DATA.PASSWORD,
+    );
+  });
+
+  await test.step("enter confirm password", async () => {
+    await createNewCustomerAccountPage.enterConfirmPassowrd(
+      GENERATE_RANDOM_DATA.PASSWORD,
+    );
+  });
+
+  await test.step("click on create account button", async () => {
+    await createNewCustomerAccountPage.clickonCreateAnAccountButton();
+  });
+
+  await test.step("Verify account created successfully", async () => {
+    await elementUtils.delayInSeconds(3);
+    try {
+      await myAccountPage.verifyAccountCreatedSuccesfully();
+    } catch (error) {
+      await test.step(`${error}`, async () => {});
+    }
+
+    await myAccountPage.saveCredentailsinTxtFile(
+      GENERATE_RANDOM_DATA.EMAILADDRESS,
+      GENERATE_RANDOM_DATA.PASSWORD,
+    );
+  });
   
-  await homePage.clickonCreateAccount();
-  logger.info("Click on Create Account")
-  await createNewCustomerAccountPage.enterFirstName(
-    GENERATE_RANDOM_DATA.FIRSTNAME,
-  );
-  logger.info('Enter FirstName')
-  await createNewCustomerAccountPage.enterLastName(
-    GENERATE_RANDOM_DATA.LASTNAME,
-  );
-  logger.info("Enter LastName")
-  await createNewCustomerAccountPage.enterEmailAddress(
-    GENERATE_RANDOM_DATA.EMAILADDRESS,
-  );
-  logger.info("Enter Email Addresss")
-  await createNewCustomerAccountPage.enterPassword(
-    GENERATE_RANDOM_DATA.PASSWORD,
-  );
-  logger.info("Enter Password")
-  await createNewCustomerAccountPage.enterConfirmPassowrd(
-    GENERATE_RANDOM_DATA.PASSWORD,
-  );
-  logger.info("Enter Confirm Password")
-  await createNewCustomerAccountPage.clickonCreateAnAccountButton();
-  logger.info("Click on Create Account")
-  await elementUtils.delayInSeconds(3);
-  try{
-  await myAccountPage.verifyAccountCreatedSuccesfully();
-  }catch(error){
-    logger.error(`Not able to view message: Thank you for registering with Main Website Store. ${error}`)
-  }
-  logger.info("Verify Account Created Successfully")
-  await myAccountPage.saveCredentailsinTxtFile(
-    GENERATE_RANDOM_DATA.EMAILADDRESS,
-    GENERATE_RANDOM_DATA.PASSWORD,
-  );
 });
 
 // for (const [key, value] of Object.entries(data)) {
